@@ -35,6 +35,10 @@ slides:
     _your websites_?
   cite: Buntport
 
+- pre: >
+    _Websites_
+  title: Are My **Day Job**
+
 - pre: Big _Tech_
   title: Has **Eaten The Web**
 
@@ -58,16 +62,22 @@ slides:
   source: Will A.I. Become the New McKinsey?
   url: https://www.newyorker.com/science/annals-of-artificial-intelligence/will-ai-become-the-new-mckinsey
 
-- pre: We need
-  title: More **Luddites**
+- pre: I'm _Not_
+  title: >
+    **Enjoying** This
+
+- pre: >
+    ⚒️ Raise An _Army_ ⚒️
+  title: Of **Modern Luddites**
 
 - url: https://www.hachettebookgroup.com/titles/brian-merchant/blood-in-the-machine/9780316487740/
 
-- pre: But Maybe My
-  title: Anger Implies _Enthusiasm_?
+- pre: But Maybe…
+  title: |
+    This _Anger_ is \
+    Masking **Enthusiasm**?
 
-- pre: So How
-  title: Did _I_ Get Here?
+- title: Why Am I _Here_?
 
 - img: bg/sir-tim.jpg
   alt: |
@@ -115,10 +125,23 @@ slides:
   caption: |
     Script from [Jane/Eyre](https://www.miriamsuzanne.com/theater/janeeyre/)
 
+- pre: Spoken _Lines_
+  title: Considered **Essential**
+
+- pre: Stage _Directions_
+  title: Considered **Optional**
+
+- pre: A _Playwright's_
+  title: >
+    **Hints** & **Suggestions**
+
 - img: bg/jane-eyre.jpg
   alt: Two women in bed
   caption: |
     Photo from [Jane/Eyre](https://www.miriamsuzanne.com/theater/janeeyre/)
+
+- pre: Not Just _Artists_
+  title: But **Audience**
 
 - img: bg/bogart.jpg
   alt: Headshot
@@ -150,9 +173,7 @@ slides:
   caption: |
     1989 - [WWW HyperMedia Browser](https://worldwideweb.cern.ch/browser/)
     & *Editor*
-- img: bg/cern-next.jpg
-  alt: NeXT computer with a worn-out sticker
-  caption: Tim's original NeXT **web server**
+
 - img: bg/ibm-pc.jpg
   alt: Old IBM desktop
   position: top
@@ -227,13 +248,17 @@ slides:
     Web **for all**. Web **on everything**.
   cite: W3C [Mission Statement](https://w3.org/Consortium/mission.html#principles)
 
-- quote: |
-    It is required that HTML be
-    **a common language between all platforms**...
-  cite: WWW Project
+- pre: Have To
+  title: Give Up **Control**
+
+- url: https://info.cern.ch/hypertext/WWW/MarkUp/HTMLConstraints.html
+  caption: >
+    [info.cern.ch](https://info.cern.ch/)
+
 - quote: |
     ...This implies no device-specific markup,
-    **or anything which requires control over fonts or colors**.
+    or anything which requires
+    **control over fonts or colors**.
   cite: WWW Project
 
 - pre: Web "_Design_"
@@ -248,9 +273,30 @@ slides:
     1994 - [Cascading ~~HTML~~ style sheets](https://w3.org/People/howcome/p/cascade.html)
     by Håkon Lie
 
+- title: >
+    **CSS**
+
 - quote: |
     Provide **hints** that the browser **may or may not use**.
   <<: *proposal
+
+- quote: >
+    …Allow the author
+    to **attach style hints**.
+  cite: *proposal
+
+- quote: >
+    Styles are **suggestions**
+    or **hints** about behavior,
+    **not rules**...
+  cite: >
+    Robert Raisch
+
+- quote: >
+    A set of **HINTS** or **SUGGESTIONS**
+    to the renderer which _might be used_...
+  cite: >
+    Robert Raisch
 
 - quote: |
     This proposal tries to
@@ -295,8 +341,15 @@ slides:
     [OddBird](https://oddbird.net/)
 - url: https://www.w3.org/TR/css-cascade-5/
   caption: >
-    [CSS Cascading and Inheritance](https://www.w3.org/TR/css-cascade-5/), Level 5
+    [CSS Specification](https://www.w3.org/TR/css-cascade-5/)
 
-- pre: Along The Way…
-  title: I've [Made Some Things](/project/)
+- pre: The web (_to me_)
+  title: Is a **Weird Art Project**
+
+- pre: The web _is for_
+  title: Weird **Art Projects**
+
+- pre: A few along the way…
+  title: >
+    [The **Post-Obsolete** Book](/project/post-obsolete/)
 ---

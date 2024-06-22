@@ -1,0 +1,50 @@
+<fieldset>
+  <legend>Type</legend>
+
+  <ground-control set-prop="--_user-size">
+    <label for="user-size">Size</label>
+    <input
+      id="user-size"
+      type="range"
+      min="50"
+      max="200"
+      value="100">
+    <span><output for="user-size"></output>%</span>
+  </ground-control>
+
+  <ground-control set-prop="--_user-mono">
+    <label for="user-mono">Monospace</label>
+    <input
+      id="user-mono"
+      type="range"
+      min="0"
+      max="1"
+      step="0.01"
+      value="0">
+    <output for="user-mono"></output>
+  </ground-control>
+
+  <ground-control set-prop="--_user-casl">
+    <label for="user-casl">Casual</label>
+    <input
+      id="user-casl"
+      type="range"
+      min="0"
+      max="1"
+      step="0.01"
+      value="0">
+    <output for="user-casl"></output>
+  </ground-control>
+
+  <ground-control set-prop="--_user-slnt">
+    <label for="user-slnt">Slant</label>
+    <input
+      id="user-slnt"
+      type="range"
+      min="-15"
+      max="0"
+      step="0.1"
+      value="0">
+    <output for="user-slnt"></output>
+  </ground-control>
+</fieldset>

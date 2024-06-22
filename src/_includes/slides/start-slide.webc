@@ -1,18 +1,45 @@
 <header>
-  <h1 @html="mdI(this.title)"></h1>
-  <p @html="mdI(this.desc)"></p>
-  <time
-    webc:if="this.isProject"
-    :datetime="this.date"
-    @text="`circa ${this.date.getUTCFullYear()}`"
-  ></time>
+  <div class="deck-title">
+    <h1 @html="mdI(this.title)"></h1>
+    <p @html="mdI(this.desc)"></p>
+  </div>
+
+  <div class="caption">
+    <time
+      webc:if="this.isProject"
+      :datetime="this.date"
+      @html="`circa <em>${this.date.getUTCFullYear()}</em>`"
+    ></time>
+    <div class="actions">
+      <button set-view="speaker">grid</button>
+      <button set-view="slideshow">present</button>
+    </div>
+  </div>
 </header>
 
 <style>
   start-slide {
     display: grid;
-    place-content: center;
 
     p { margin: unset; }
+
+    header {
+      display: grid;
+      grid-template: 1fr auto / 100%;
+    }
+
+    .deck-title {
+      place-self: center;
+    }
+
+    .caption {
+      align-items: center;
+      display: grid;
+      grid-template-columns: 1fr auto;
+    }
+
+    .actions {
+      grid-column: 2;
+    }
   }
 </style>

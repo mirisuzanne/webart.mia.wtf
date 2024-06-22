@@ -11,6 +11,50 @@ layout: base
   @html="content"
 ></main>
 
-<footer>
+<aside>
   <color-theme></color-theme>
+  <font-theme></font-theme>
+</aside>
+
+<footer>
+  A site by
+  <a href="https://miriamsuzanne.com">Miriam Suzanne</a>
 </footer>
+
+<style>
+  body {
+    display: grid;
+    gap: var(--gap);
+    grid-template: 'n' auto 'h' auto 'm' 1fr 'a' auto 'f' auto / 100%;
+
+    @media (width > 45em) {
+      grid-template:
+        'n n' auto
+        'h h' auto
+        'm a' 1fr
+        'f f' auto
+        / 1fr minmax(min-content, min(20em, 25%))
+      ;
+    }
+
+    > nav { grid-area: n; }
+    > header { grid-area: h; }
+    > main { grid-area: m; }
+    > aside { grid-area: a; }
+    > footer { grid-area: f; }
+  }
+
+  fieldset {
+    display: grid;
+    gap: var(--gap);
+  }
+
+  ground-control {
+    grid-template: 'label label' 1fr 'input output' 1fr / 1fr 2.5em;
+    column-gap: var(--gap);
+
+    label { grid-area: label; }
+    input, select { grid-area: input; }
+    output { grid-area: output; }
+  }
+</style>

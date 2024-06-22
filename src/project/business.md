@@ -1,6 +1,6 @@
 ---
-title: Bu$ine$$-Bu$ine$$
-desc: This is a business site, and business is good
+title: Bu$ine$$-**Bu$ine$$**
+desc: This is a business site, _and business is good_
 url: business-business.business
 date: 2022-11-04
 
@@ -45,5 +45,5 @@ slides:
 
 - pre: This Site…
   title: >
-    [webart.mia.wtf](https://webart.mia.wtf)
+    [**webart**.mia.wtf](/)
 ---

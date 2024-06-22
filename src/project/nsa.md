@@ -6,12 +6,6 @@ url: nsa4.us
 date: 2014-06-01
 
 slides:
-
-- pre: This week
-  title: If We're **Honest**\*
-  caption: |
-    * Why bother?
-
 - url: https://en.wikipedia.org/wiki/Edward_Snowden
 
 - url: https://bengrosser.com/projects/scaremail/
@@ -24,6 +18,9 @@ slides:
     an _algorithmically generated narrative_
     containing a collection of **probable NSA search terms**.
   cite: Ben Grosser
+
+- pre: Finally _built it_
+  title: This **Week**
 
 - img: nsa/screenshot.jpg
   alt: Screenshot

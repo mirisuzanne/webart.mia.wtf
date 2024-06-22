@@ -16,6 +16,13 @@
   <style @raw="getBundle('css')" webc:keep></style>
 </head>
 <body>
+  <nav>
+    <span webc:if="this.page.url === '/'">Web<strong>Art</strong></span>
+    <a webc:else href="/" rel="home">Web<strong>Art</strong></a>
+
+    <a href="/background/">tour</a>
+  </nav>
+
   <main
     webc:nokeep
     @raw="content"
@@ -24,3 +31,13 @@
   <script @raw="getBundle('js')" webc:keep></script>
 </body>
 </html>
+
+<style>
+  body > nav {
+    border-block-end: thin dotted var(--border);
+    display: flex;
+    justify-content: space-between;
+    margin-block-end: var(--gap);
+    padding: calc(var(--gap) / 2);
+  }
+</style>

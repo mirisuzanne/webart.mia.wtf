@@ -12,7 +12,7 @@ slides:
     sitting in front of the sign
     for Naropa University
   caption: |
-    Naropa _Summer Writing Program_
+    2012 - Naropa _Summer Writing Program_
 
 - pre: 4-week _Program_
   title: Each Week, **Different Class**
@@ -21,10 +21,11 @@ slides:
   alt: |
     Drawing of a root system
     with multiple plant stalks
+  position: center
   caption: |
-    Program Theme: **Rhizomes**
+    2012 Theme: **Rhizomes**
 
-- pre: Week _3_ Theme…
+- pre: Week Theme…
   title: >
     **Obsolescence**
 
@@ -42,6 +43,9 @@ slides:
     Miriam sitting at an overhead projector
     silhouetted against a screen
     with overhead projected on top of video.
+  position: center
+  caption: >
+    Performable Website
 
 - title: >
     **The Obsolete Book**

@@ -1,12 +1,10 @@
 ---
-title: 'Miriam: _Web Enthusiast?_'
-desc: '(Let’s find out)'
+title: Digital **Art**(_ifacts_)
 eleventyImport:
-  collections: ["parts"]
+  collections: ["project"]
 ---
 
-<ol>
-  <li webc:for="part of collections.parts">
-    <a :href="part.url" @html="mdI(part.data.title)"></a>
-  </li>
-</ol>
+<div
+  webc:is="project-grid"
+  :@list="collections.project"
+></div>

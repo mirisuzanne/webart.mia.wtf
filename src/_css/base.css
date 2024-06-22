@@ -9,15 +9,16 @@
 }
 
 html {
-  --mono: 0;
-  --casl: 0;
-  --slnt: 0;
-  --ital: 0.5;
+  --mono: var(--_user-mono, 0);
+  --casl: var(--_user-casl, 0);
+  --slnt: var(--_user-slnt, 0);
+  --ital: var(--_user-ital, 0.5);
 
   --italic-slant: -15;
 
   font-family: 'RecVar', sans-serif;
   font-weight: 300;
+  font-size: calc(var(--_user-size, 100) * 1%);
 }
 
 
@@ -93,6 +94,11 @@ button {
   &:hover,
   &:active {
     background-color: var(--focus);
+  }
+
+  &[aria-pressed=true] {
+    border-color: var(--border);
+    outline: medium solid var(--text);
   }
 }
 

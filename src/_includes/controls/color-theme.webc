@@ -1,6 +1,6 @@
-<h2>Color Settings</h2>
-
 <fieldset>
+  <legend>Themes</legend>
+
   <ground-control set-attr="color-theme">
     <label for="color-theme">Theme</label>
     <select name="color-theme" id="color-theme">
@@ -29,11 +29,13 @@
       min="25"
       max="200"
       :value="$data.color.contrast">
-    <span><output for="user-contrast"></output>/100</span>
+    <span><output for="user-contrast"></output>%</span>
   </ground-control>
 </fieldset>
 
 <fieldset>
+  <legend>Colors</legend>
+
   <ground-control set-prop="--_user-hue">
     <label for="user-hue">Hue</label>
     <input
@@ -53,7 +55,7 @@
       min="0"
       max="100"
       :value="$data.color.chroma">
-    <span><output for="user-chroma"></output>/100</span>
+    <span><output for="user-chroma"></output>%</span>
   </ground-control>
 
   <ground-control set-prop="--_user-lightness">
@@ -64,26 +66,11 @@
       min="1"
       max="99"
       :value="$data.color.lightness">
-    <span><output for="user-lightness"></output>/100</span>
+    <span><output for="user-lightness"></output>%</span>
   </ground-control>
 </fieldset>
 
 <style>
-  color-theme,
-  fieldset {
-    display: grid;
-    gap: var(--gap);
-  }
-
-  ground-control {
-    grid-template: 'label label' 1fr 'input output' 1fr / 1fr auto;
-    column-gap: var(--gap);
-
-    label { grid-area: label; }
-    input, select { grid-area: input; }
-    output { grid-area: output; }
-  }
-
   #user-hue {
     --thumb: var(--primary);
     --track: linear-gradient(

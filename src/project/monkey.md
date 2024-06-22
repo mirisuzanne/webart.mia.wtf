@@ -1,6 +1,6 @@
 ---
-title: Monkey Writr
-desc: For finite monkeys on a deadline
+title: Monkey **Writr**
+desc: For finite monkeys _on a deadline_
 url: monkey.writr.art
 date: 2021-08-12
 
@@ -18,6 +18,7 @@ slides:
   cite: Wikipedia
 
 - img: monkey/not.jpg
+  position: bottom
   alt: >
     Wikepedia has a photo of a chimpanzee
     at a typewriter,
@@ -35,4 +36,8 @@ slides:
 - url: https://monkey.writr.art
   caption: >
     [monkey.writr.art](https://monkey.writr.art)
+
+- url: https://hackertyper.net
+  caption: |
+    See also: [Hacker Typer](https://hackertyper.net) (not mine)
 ---
