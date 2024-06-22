@@ -73,6 +73,15 @@ slides:
     (popular with _academics_!)
 - pre: step **4**
   title: The **Website**
+
+- url: https://eliterature.org
+  caption: >
+    [Electronic Literature](https://eliterature.org)
+
+- url: https://www.digitalcreatures.net
+  caption: >
+    [Jason Nelson](https://www.digitalcreatures.net)
+
 - url: https://post-obsolete.com
   position: center
   caption: >
