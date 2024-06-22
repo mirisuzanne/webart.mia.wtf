@@ -1,0 +1,118 @@
+---
+layout: base
+---
+
+<slide-deck :id="slugify(this.page.url)" slide-view="speaker" key-control>
+  <start-slide
+    :@title="this.title"
+    :@desc="this.desc"
+    :@date="this.page.date"
+    :@is-project="this.tags?.includes('project')"
+    slide-canvas
+  >start slide</start-slide>
+  <div
+    webc:nokeep
+    webc:for="slide of this.slides"
+  >
+    <image-slide
+      webc:if="slide.img || slide.url"
+      :@slide="slide"
+      slide-canvas
+    >image slide</image-slide>
+
+    <quote-slide
+      webc:elseif="slide.quote"
+      :@slide="slide"
+      slide-canvas
+    >quote slide</quote-slide>
+
+    <title-slide
+      webc:else
+      :@slide="slide"
+      slide-canvas
+    >title slide</title-slide>
+  </div>
+  <next-project
+    webc:if="this.tags?.includes('project') && getNextCollectionItem(collections.project)"
+    :@next="getNextCollectionItem(collections.project)"
+    slide-canvas
+  >next project</next-project>
+</slide-deck>
+
+<style>
+slide-deck {
+  --default-slide-border: thin solid gray;
+  container: slide-deck slide / inline-size;
+  display: grid;
+}
+
+[slide-view=speaker] {
+  --slide-canvas-border: var(--default-slide-border);
+  --slide-note-margin-block: var(--gap);
+  --slide-ratio: 16/9;
+  --target-margin: var(--gap);
+  --target-outline: medium dotted;
+  --target-outline-offset: calc(var(--gap) * 0.5);
+  font-size: var(--text-small);
+  gap: var(--row-gap, var(--gap)) var(--column-gap, var(--gap));
+  grid-template-columns: repeat(auto-fill, minmax(min(20em, 100%), 1fr));
+  padding: var(--gap);
+}
+
+[slide-view=slideshow] {
+  grid-auto-rows: 100svh;
+
+  [slide-item='container'] {
+    display: grid;
+  }
+
+  [slide-canvas] {
+    border-block-end: thin solid var(--canvas);
+  }
+
+  [slide-note] {
+    display: none;
+  }
+}
+
+[slide-item] {
+  scroll-margin-block: var(--target-margin);
+}
+
+[slide-canvas] {
+  --step--1: clamp(0.8333rem, 0.3986rem + 2.1739cqi, 2.0833rem);
+  --step-0: clamp(1rem, 0.4783rem + 2.6087cqi, 2.5rem);
+  --step-1: clamp(1.2rem, 0.5739rem + 3.1304cqi, 3rem);
+  --step-2: clamp(1.44rem, 0.6887rem + 3.7565cqi, 3.6rem);
+  --step-3: clamp(1.728rem, 0.8264rem + 4.5078cqi, 4.32rem);
+
+  --small: var(--step-0);
+  --normal: var(--step-1);
+  --large: var(--step-2);
+  --xlarge: var(--step-3);
+  --h1: var(--xlarge);
+
+  --gap: clamp(12px, 2cqmin, 24px);
+  --shim: calc(var(--gap) / 2);
+  --spacer: clamp(1.5rlh, 10vw, 5rlh);
+
+  aspect-ratio: var(--slide-ratio);
+  border: var(--slide-canvas-border);
+  container: slide / inline-size;
+  padding: var(--slide-padding, var(--gap));
+
+  &:where([aria-current='true']),
+  &:where([slide-item][aria-current='true'] *) {
+    outline: var(--target-outline);
+    outline-offset: var(--target-outline-offset);
+  }
+
+  > * {
+    font-size: var(--slide-normal, var(--normal));
+  }
+}
+
+[slide-note] {
+  margin-block: var(--slide-note-margin-block);
+}
+</style>

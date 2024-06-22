@@ -1,0 +1,79 @@
+<script webc:setup>
+  const urlImg = (slide) => {
+    const url = encodeURIComponent(slide.url);
+    const size = slide.size || 'large';
+    return slide.type === 'og'
+      ? `https://v1.opengraph.11ty.dev/${url}/${size}/`
+      : `https://v1.screenshot.11ty.dev/${url}/${size}/`;
+  }
+</script>
+
+<figure
+  :image-layout="slide.layout || 'normal'"
+  :style="getStyles(this.slide, ['background', 'fit', 'position', 'padding'])"
+>
+  <img
+    webc:if="this.slide.img"
+    :src="this.slide.img"
+    :alt="this.slide.alt"
+  >
+  <img
+    webc:elseif="this.slide.url"
+    :src="urlImg(this.slide)"
+    alt="Screenshot"
+  >
+  <figcaption
+    webc:if="this.slide.caption"
+    @html="mdI(this.slide.caption)"
+  ></figcaption>
+</figure>
+
+<style webc:scope>
+  image-slide {
+    --slide-padding: 0;
+    display: grid;
+  }
+
+  img {
+    overflow: hidden;
+    object-fit: var(--slide-fit, cover);
+    object-position: var(--slide-position, top);
+  }
+
+  figure {
+    background-color: var(--slide-background);
+  }
+
+  [image-layout=normal] {
+    display: flex;
+    flex-flow: column;
+    place-items: stretch;
+
+    img {
+      flex: 1 1 0;
+      inline-size: 100%;
+    }
+  }
+
+  [image-layout=vertical] {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+
+    img {
+      block-size: 100%;
+      clip-path: polygon(
+        0 0,
+        calc(100% - var(--gap)) 0,
+        100% 30%,
+        calc(100% - (var(--gap) * 2)) 100%,
+        0 100%
+      );
+    }
+
+    figcaption {
+      display: grid;
+      font-size: var(--large);
+      place-content: safe center;
+    }
+  }
+</style>

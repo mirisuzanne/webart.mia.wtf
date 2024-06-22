@@ -1,0 +1,109 @@
+<script type="module">
+  class groundControl extends HTMLElement {
+    static observedAttributes = [
+      'control-for',
+      'set-attr',
+      'set-prop',
+    ];
+
+    static attrToPropMap = {
+      'control-for': 'targetSelect',
+      'set-attr': 'setAttr',
+      'set-prop': 'setProp',
+    };
+
+    static controls = [
+      'input',
+      'select'
+    ];
+
+    inputEl;
+    resetValue;
+    targetEls;
+    displayEls;
+    setProp;
+    setAttr;
+
+    targetSelect = ':root';
+
+    constructor() {
+      super();
+
+      // Add direct event listeners when component is created
+      this.addEventListener('reset', (e) => this.resetControl());
+    }
+
+    // attribute changes
+    attributeChangedCallback(name, oldValue, newValue) {
+      this[groundControl.attrToPropMap[name]] = newValue;
+      if (this.inputEl) { this.setUp(); }
+    }
+
+    // first connection
+    connectedCallback() {
+      this.inputEl = this.querySelector(groundControl.controls.join(', '));
+
+      if (this.inputEl) {
+        this.setUp();
+        this.broadCast();
+
+        this.inputEl.addEventListener('input', (e) => this.broadCast());
+        this.resetBtn?.addEventListener('click', (e) => this.resetControl());
+      } else {
+        console.error("Your circuit's dead, there's something wrong (no input/select found)");
+      }
+    }
+
+    disconnectedCallback() {
+      this.inputEl.removeEventListener('input', (e) => this.broadCast());
+      this.resetBtn?.removeEventListener('click', (e) => this.resetControl());
+    }
+
+    // methods
+    setUp = () => {
+      this.resetValue = this.inputEl.value;
+
+      const selectors = {
+        target: this.targetSelect,
+        output: `output[for=${this.inputEl.id}]`,
+        reset: `button[reset-for=${this.inputEl.id}]`,
+      };
+
+      this.targetEls = document.querySelectorAll(selectors.target);
+      this.displayEls = document.querySelectorAll(selectors.output);
+      this.resetBtn = this.querySelector(selectors.reset);
+    };
+
+    // change target attrs/props, and update output displayEls
+    broadCast = () => {
+      this.targetEls.forEach((el) => {
+        if (this.setProp) {
+          el.style.setProperty(this.setProp, this.inputEl.value);
+        }
+        if (this.setAttr) {
+          el.setAttribute(this.setAttr, this.inputEl.value);
+        }
+      });
+
+      this.displayEls.forEach((el) => {
+        const units = el.getAttribute('with-units') || '';
+        el.value = `${this.inputEl.value}${units}`;
+      });
+    };
+
+    // reset the value of the control
+    resetControl = (value) => {
+      this.inputEl.value = value || this.resetValue;
+      this.broadCast();
+    };
+  }
+
+  // register the ground-control element
+  customElements.define("ground-control", groundControl);
+</script>
+
+<style>
+  ground-control {
+    display: grid;
+  }
+</style>

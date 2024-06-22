@@ -1,0 +1,74 @@
+<script type="module">
+  class toggleGroup extends HTMLElement {
+    static observedAttributes = [
+      'control-for',
+      'set-attr',
+      'set-prop',
+    ];
+
+    static attrToPropMap = {
+      'control-for': 'targetSelect',
+      'set-attr': 'setAttr',
+      'set-prop': 'setProp',
+    };
+
+    targetSelect;
+    targetEl;
+    toggleButtons;
+    currentValue;
+
+    // attribute changes
+    attributeChangedCallback(name, oldValue, newValue) {
+      this[toggleGroup.attrToPropMap[name]] = newValue;
+      this.init();
+    }
+
+    constructor() {
+      super();
+      this.init();
+
+      this.toggleButtons.forEach((btn) => {
+        btn.addEventListener('click', (e) => { this.doPress(btn); });
+      });
+    };
+
+    init = () => {
+      this.targetEl = document.querySelector(this.targetSelect || ':root');
+
+      // set missing values on buttons
+      this.querySelectorAll('button').forEach((btn) => {
+        btn.dataset.value = btn.dataset.value || btn.innerText;
+      });
+
+      this.toggleButtons = this.querySelectorAll('button');
+
+      // active is first pressed, or first
+      let initBtn = this.querySelector('[aria-pressed]')
+        || this.toggleButtons[0];
+
+      // activate the first press
+      this.doPress(initBtn);
+    }
+
+    doPress = (btn) => {
+      this.currentValue = btn.dataset.value;
+
+      if (this.setProp) {
+        this.targetEl.style.setProperty(this.setProp, this.currentValue);
+      }
+      if (this.setAttr) {
+        this.targetEl.setAttribute(this.setAttr, this.currentValue);
+      }
+
+      this.toggleButtons.forEach((btn) => {
+        if (btn.dataset.value === this.currentValue) {
+          btn.setAttribute('aria-pressed', true);
+        } else {
+          btn.setAttribute('aria-pressed', false);
+        }
+      });
+    }
+  };
+
+  window.customElements.define('toggle-group', toggleGroup);
+</script>

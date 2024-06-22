@@ -1,0 +1,32 @@
+* { box-sizing: border-box; }
+html { block-size: 100%; }
+
+body {
+  margin: unset;
+  min-block-size: 100%;
+}
+
+img,
+svg {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+picture { display: contents; }
+source { display: none; }
+figure { margin: unset; }
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}

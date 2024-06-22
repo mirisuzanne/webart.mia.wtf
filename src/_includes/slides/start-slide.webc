@@ -1,0 +1,18 @@
+<header>
+  <h1 @html="mdI(this.title)"></h1>
+  <p @html="mdI(this.desc)"></p>
+  <time
+    webc:if="this.isProject"
+    :datetime="this.date"
+    @text="`circa ${this.date.getUTCFullYear()}`"
+  ></time>
+</header>
+
+<style>
+  start-slide {
+    display: grid;
+    place-content: center;
+
+    p { margin: unset; }
+  }
+</style>

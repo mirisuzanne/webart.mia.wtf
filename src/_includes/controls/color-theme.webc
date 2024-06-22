@@ -1,0 +1,97 @@
+<h2>Color Settings</h2>
+
+<fieldset>
+  <ground-control set-attr="color-theme">
+    <label for="color-theme">Theme</label>
+    <select name="color-theme" id="color-theme">
+      <option value="monochrome">monochrome</option>
+      <option value="duotone">duotone</option>
+      <option value="complement" =>complement</option>
+      <option value="adjacent">adjacent</option>
+      <option value="triad" selected>triad</option>
+    </select>
+  </ground-control>
+
+  <ground-control set-prop="--_user-scheme">
+    <label for="color-scheme">Mode</label>
+    <select name="color-scheme" id="color-scheme">
+      <option value="light dark">auto</option>
+      <option value="light">light</option>
+      <option value="dark">dark</option>
+    </select>
+  </ground-control>
+
+  <ground-control set-prop="--_user-contrast">
+    <label for="user-contrast">Contrast</label>
+    <input
+      id="user-contrast"
+      type="range"
+      min="25"
+      max="200"
+      :value="$data.color.contrast">
+    <span><output for="user-contrast"></output>/100</span>
+  </ground-control>
+</fieldset>
+
+<fieldset>
+  <ground-control set-prop="--_user-hue">
+    <label for="user-hue">Hue</label>
+    <input
+      id="user-hue"
+      type="range"
+      min="0"
+      max="360"
+      :value="$data.color.hue">
+    <output for="user-hue"></output>
+  </ground-control>
+
+  <ground-control set-prop="--_user-chroma">
+    <label for="user-chroma">Chroma</label>
+    <input
+      id="user-chroma"
+      type="range"
+      min="0"
+      max="100"
+      :value="$data.color.chroma">
+    <span><output for="user-chroma"></output>/100</span>
+  </ground-control>
+
+  <ground-control set-prop="--_user-lightness">
+    <label for="user-lightness">Lightness</label>
+    <input
+      id="user-lightness"
+      type="range"
+      min="1"
+      max="99"
+      :value="$data.color.lightness">
+    <span><output for="user-lightness"></output>/100</span>
+  </ground-control>
+</fieldset>
+
+<style>
+  color-theme,
+  fieldset {
+    display: grid;
+    gap: var(--gap);
+  }
+
+  ground-control {
+    grid-template: 'label label' 1fr 'input output' 1fr / 1fr auto;
+    column-gap: var(--gap);
+
+    label { grid-area: label; }
+    input, select { grid-area: input; }
+    output { grid-area: output; }
+  }
+
+  #user-hue {
+    --thumb: var(--primary);
+    --track: linear-gradient(
+      to right in oklch,
+      light-dark(oklch(35% 80% 0deg), oklch(65% 80% 0deg)),
+      light-dark(oklch(35% 80% 120deg), oklch(65% 80% 120deg)),
+      light-dark(oklch(35% 80% 240deg), oklch(65% 80% 240deg)),
+      light-dark(oklch(35% 80% 359.9deg), oklch(65% 80% 359.9deg))
+    )
+  }
+</style>

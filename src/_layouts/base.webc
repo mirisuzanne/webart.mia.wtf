@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" :color-theme="color.theme">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebArt by Mia</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>👩🏼‍🎤</text></svg>"></link>
+
+  <style webc:keep>
+    @import url('/css/reset.css') layer(init.reset);
+    @import url('/css/fonts.css') layer(init.fonts);
+    @import url('/css/color.css') layer(init.color);
+    @import url('/css/base.css') layer(init.base);
+  </style>
+  <style @raw="getBundle('css')" webc:keep></style>
+</head>
+<body>
+  <main
+    webc:nokeep
+    @raw="content"
+  ></main>
+
+  <script @raw="getBundle('js')" webc:keep></script>
+</body>
+</html>

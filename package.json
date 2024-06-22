@@ -1,0 +1,33 @@
+{
+  "name": "webart.mia.wtf",
+  "version": "1.0.0",
+  "description": "a site for collecting my webart",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "serve": "npx @11ty/eleventy --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mirisuzanne/webart.mia.wtf.git"
+  },
+  "keywords": [
+    "art",
+    "elit",
+    "web"
+  ],
+  "author": "Miriam Suzanne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mirisuzanne/webart.mia.wtf/issues"
+  },
+  "homepage": "https://github.com/mirisuzanne/webart.mia.wtf#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0-alpha.13",
+    "@11ty/eleventy-img": "^4.0.2",
+    "@11ty/eleventy-plugin-webc": "^0.11.2",
+    "@11ty/webc": "^0.11.4",
+    "@oddbird/slide-deck": "^0.1.4"
+  }
+}

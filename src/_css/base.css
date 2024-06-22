@@ -1,0 +1,138 @@
+*,
+*::before,
+*::after {
+  font-variation-settings:
+    "MONO" var(--mono),
+    "CASL" var(--casl),
+    "slnt" var(--slnt),
+    "ital" var(--ital);
+}
+
+html {
+  --mono: 0;
+  --casl: 0;
+  --slnt: 0;
+  --ital: 0.5;
+
+  --italic-slant: -15;
+
+  font-family: 'RecVar', sans-serif;
+  font-weight: 300;
+}
+
+
+body {
+  --text-small: clamp(0.938rem, 0.824rem + 0.568cqi, 1.25rem);
+  --text-normal: clamp(1.25rem, 1.023rem + 1.136cqi, 1.875rem);
+  --text-large: clamp(1.35rem, 0.818rem + 2.659cqi, 2.813rem);
+  --text-xlarge: clamp(1.7rem, 0.784rem + 4.58cqi, 4.219rem);
+
+  --gap: clamp(12px, 0rem + 3.75cqi, 24px);
+
+  font-size: var(--text-normal);
+  padding: var(--gap);
+}
+
+h1, h2 {
+  margin: unset;
+
+  strong {
+    font-weight: 1000;
+  }
+}
+
+h1 { font-size: var(--text-xlarge); }
+h2 { font-size: var(--text-large); }
+
+a {
+  &:any-link {
+    color: var(--action);
+    text-decoration-color: var(--decoration);
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: var(--focus);
+  }
+}
+
+strong,
+em {
+  --casl: 0.5;
+  color: var(--primary);
+  background: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+i, em {
+  --slnt: var(--italic-slant);
+  --casl: 1;
+}
+
+pre,
+code,
+tt {
+  --mono: 1;
+}
+
+figcaption {
+  background-color: var(--canvas);
+  padding: var(--gap);
+}
+
+button {
+  background-color: var(--action);
+  color: var(--canvas);
+  border: medium solid var(--decoration);
+
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: var(--focus);
+  }
+}
+
+input[type=range] {
+  --track-block: 0.25ex;
+  --thumb-block: 1ex;
+  vertical-align: middle;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  --webkit-appearance: none;
+  appearance: none;
+  background: var(--track, currentColor);
+  block-size: var(--track-block);
+  border-radius: 1em;
+}
+
+input[type=range]::-moz-range-track {
+  appearance: none;
+  background: var(--track, currentColor);
+  block-size: var(--track-block);
+  border-radius: 1em;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  --webkit-appearance: none;
+  appearance: none;
+  background-color: var(--thumb, var(--accent));
+  border: thin solid var(--canvas);
+  border-radius: 1em;
+  block-size: var(--thumb-block);
+  inline-size: var(--thumb-block);
+  translate: 0 calc((var(--track-block) / 2) - (var(--thumb-block) / 2));
+}
+
+input[type=range]::-moz-range-thumb {
+  appearance: none;
+  background-color: var(--thumb, var(--accent));
+  border: thin solid var(--canvas);
+  border-radius: 1em;
+  block-size: var(--thumb-block);
+  inline-size: var(--thumb-block);
+}

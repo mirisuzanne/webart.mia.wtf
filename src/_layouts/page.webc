@@ -1,0 +1,16 @@
+---
+layout: base
+---
+
+<header>
+  <h1 @html="mdI(this.title)"></h1>
+  <p @html="mdI(this.desc)"></p>
+</header>
+
+<main
+  @html="content"
+></main>
+
+<footer>
+  <color-theme></color-theme>
+</footer>

@@ -1,0 +1,92 @@
+<script type="module">
+  class isToggle extends HTMLElement {
+    static observedAttributes = [
+      'control-for',
+      'toggle-attr',
+      'send-event',
+      'on-value',
+      'off-value',
+      'true-false',
+    ];
+
+    static attrToPropMap = {
+      'control-for': 'targetSelect',
+      'toggle-attr': 'toggleAttr',
+      'send-event': 'sendEvent',
+      'on-value': 'onValue',
+      'off-value': 'offValue',
+    };
+
+    static booleanAttrsMap = {
+      'send-event': 'sendEvent',
+      'true-false': 'trueFalse',
+    };
+
+    targetSelect;
+    targetEl;
+    toggleBtn;
+    currentState;
+
+    // attribute changes
+    attributeChangedCallback(name, oldValue, newValue) {
+      this[isToggle.attrToPropMap[name]] = newValue;
+      this[isToggle.booleanAttrsMap[name]] = this[isToggle.booleanAttrsMap[name]] || 'true';
+    }
+
+    constructor() {
+      super();
+
+      this.targetSelect = this.getAttribute('control-for');
+      this.targetEl = document.querySelector(this.targetSelect || ':root');
+      this.toggleBtn = this.querySelector('button');
+      this.currentState = this.isPressed();
+      this.pressResult();
+
+      this.toggleBtn.addEventListener('click', (e) => { this.doPress(); });
+    };
+
+    isPressed = () => this.toggleBtn.getAttribute('aria-pressed') === 'true';
+
+    doPress = () => {
+      this.currentState = !this.currentState;
+      this.pressResult();
+    }
+
+    pressResult = () => {
+      this.toggleBtn.setAttribute('aria-pressed', this.currentState);
+
+      if (this.toggleAttr) {
+        if (this.trueFalse) {
+          this.targetEl.setAttribute(this.toggleAttr, `${this.currentState}`);
+        } else {
+          const toValue = this.currentState
+            ? this.onValue
+            : this.offValue;
+
+          if (!toValue) {
+            this.targetEl.toggleAttribute(this.toggleAttr);
+          } else {
+            this.targetEl.setAttribute(this.toggleAttr, toValue);
+          }
+        }
+      } else if (this.sendEvent) {
+        const theEvent = this.currentState
+            ? this.onValue || this.sendEvent
+            : this.offValue || this.sendEvent;
+
+        if (theEvent) {
+          theEvent.split(' ').forEach(eventName => {
+            this.targetEl.dispatchEvent(
+              new Event(eventName, {
+                view: window,
+                bubbles: false
+              })
+            );
+          });
+        }
+      }
+    }
+  };
+
+  window.customElements.define('is-toggle', isToggle);
+</script>

@@ -1,0 +1,101 @@
+html {
+  color-scheme: var(--_scheme, dark light);
+
+/* default styles */
+  --_hue: var(--_user-hue, 220);
+  --_contrast: calc(var(--_user-contrast, 85) * 1%);
+  --_lightness: calc(var(--_user-lightness, 60) * 1%);
+  --_chroma: calc(var(--_user-chroma, 85) * 1%);
+  --_scheme: var(--_user-scheme, light dark);
+
+  --_complement: calc(var(--_hue, 0) + 180);
+  --_triad-a: calc(var(--_hue, 0) + 120);
+  --_triad-b: calc(var(--_hue, 0) - 120);
+  --_adjacent-a: calc(var(--_hue, 0) + 60);
+  --_adjacent-b: calc(var(--_hue, 0) - 60);
+
+  --_mix-dark: oklch(0 0 none);
+  --_mix-light: oklch(1 0 none);
+  --_mix-fg: light-dark(var(--_mix-dark), var(--_mix-light));
+  --_mix-bg: light-dark(var(--_mix-light), var(--_mix-dark));
+  --_mix-step: calc(var(--_contrast) / var(--_tints-shades, 4));
+
+/* base theme colors (should be provided server-side) */
+  --primary: oklch(var(--_lightness) var(--_chroma) var(--_hue));
+  --accent: var(--primary);
+  --feature: var(--primary);
+
+  --complement: oklch(var(--_lightness) var(--_chroma) var(--_complement));
+  --triad-a: oklch(var(--_lightness) var(--_chroma) var(--_triad-a));
+  --triad-b: oklch(var(--_lightness) var(--_chroma) var(--_triad-b));
+  --adjacent-a: oklch(var(--_lightness) var(--_chroma) var(--_adjacent-a));
+  --adjacent-b: oklch(var(--_lightness) var(--_chroma) var(--_adjacent-b));
+
+/* generated palettes (should be generated server-side?) */
+  --primary-fg-1: color-mix(in oklch, var(--primary), var(--_mix-fg) var(--_mix-step));
+  --primary-bg-1: color-mix(in oklch, var(--primary), var(--_mix-bg) var(--_mix-step));
+  --primary-fg-2: color-mix(in oklch, var(--primary), var(--_mix-fg) calc(var(--_mix-step) * 2));
+  --primary-bg-2: color-mix(in oklch, var(--primary), var(--_mix-bg) calc(var(--_mix-step) * 2));
+  --primary-fg-3: color-mix(in oklch, var(--primary), var(--_mix-fg) calc(var(--_mix-step) * 3));
+  --primary-bg-3: color-mix(in oklch, var(--primary), var(--_mix-bg) calc(var(--_mix-step) * 3));
+  --primary-fg-4: color-mix(in oklch, var(--primary), var(--_mix-fg) calc(var(--_mix-step) * 4));
+  --primary-bg-4: color-mix(in oklch, var(--primary), var(--_mix-bg) calc(var(--_mix-step) * 4));
+
+  --accent-fg-1: color-mix(in oklch, var(--accent), var(--_mix-fg) var(--_mix-step));
+  --accent-bg-1: color-mix(in oklch, var(--accent), var(--_mix-bg) var(--_mix-step));
+  --accent-fg-2: color-mix(in oklch, var(--accent), var(--_mix-fg) calc(var(--_mix-step) * 2));
+  --accent-bg-2: color-mix(in oklch, var(--accent), var(--_mix-bg) calc(var(--_mix-step) * 2));
+  --accent-fg-3: color-mix(in oklch, var(--accent), var(--_mix-fg) calc(var(--_mix-step) * 3));
+  --accent-bg-3: color-mix(in oklch, var(--accent), var(--_mix-bg) calc(var(--_mix-step) * 3));
+  --accent-fg-4: color-mix(in oklch, var(--accent), var(--_mix-fg) calc(var(--_mix-step) * 4));
+  --accent-bg-4: color-mix(in oklch, var(--accent), var(--_mix-bg) calc(var(--_mix-step) * 4));
+
+  --feature-fg-1: color-mix(in oklch, var(--feature), var(--_mix-fg) var(--_mix-step));
+  --feature-bg-1: color-mix(in oklch, var(--feature), var(--_mix-bg) var(--_mix-step));
+  --feature-fg-2: color-mix(in oklch, var(--feature), var(--_mix-fg) calc(var(--_mix-step) * 2));
+  --feature-bg-2: color-mix(in oklch, var(--feature), var(--_mix-bg) calc(var(--_mix-step) * 2));
+  --feature-fg-3: color-mix(in oklch, var(--feature), var(--_mix-fg) calc(var(--_mix-step) * 3));
+  --feature-bg-3: color-mix(in oklch, var(--feature), var(--_mix-bg) calc(var(--_mix-step) * 3));
+  --feature-fg-4: color-mix(in oklch, var(--feature), var(--_mix-fg) calc(var(--_mix-step) * 4));
+  --feature-bg-4: color-mix(in oklch, var(--feature), var(--_mix-bg) calc(var(--_mix-step) * 4));
+
+  --gradient-text: linear-gradient(
+    to bottom right in oklab,
+    var(--primary-fg-1),
+    var(--accent-fg-1)
+  );
+}
+
+[color-theme] {
+  --canvas: var(--_mix-bg);
+  --text: var(--primary-fg-4);
+  --border: var(--accent-fg-1);
+
+  --action: var(--accent-fg-2);
+  --focus: var(--accent-fg-3);
+  --decoration: var(--feature-fg-1);
+
+  accent-color: var(--accent);
+  background-color: var(--canvas);
+  color: var(--text);
+}
+
+[color-theme=monochrome] {
+  --_chroma: 0;
+}
+
+[color-theme=complement] {
+  --accent: var(--complement);
+  --feature: var(--primary);
+}
+
+[color-theme=triad] {
+  --accent: var(--triad-a);
+  --feature: var(--triad-b);
+}
+
+[color-theme=adjacent] {
+  --accent: var(--adjacent-a);
+  --feature: var(--adjacent-b);
+}
+

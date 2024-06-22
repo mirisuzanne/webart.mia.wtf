@@ -1,0 +1,12 @@
+---
+title: 'Miriam: _Web Enthusiast?_'
+desc: '(Let’s find out)'
+eleventyImport:
+  collections: ["parts"]
+---
+
+<ol>
+  <li webc:for="part of collections.parts">
+    <a :href="part.url" @html="mdI(part.data.title)"></a>
+  </li>
+</ol>

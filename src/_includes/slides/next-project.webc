@@ -1,0 +1,34 @@
+<nav>
+  <h2>
+    <span class="pre">Next up…</span>
+    <a
+      class="title"
+      :href="next.url"
+      @html="mdI(next.data.title)"
+    ></a>
+  </h2>
+</nav>
+
+<style>
+next-project {
+  display: grid;
+  place-content: center;
+
+  span, a {
+    display: block;
+  }
+
+  .pre {
+    display: block;
+    font-size: var(--large);
+    font-style: italic;
+    font-weight: normal;
+    text-align: left;
+  }
+
+  .title {
+    font-size: var(--xlarge);
+    font-weight: bold;
+  }
+}
+</style>

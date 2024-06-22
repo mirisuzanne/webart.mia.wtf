@@ -1,0 +1,76 @@
+<figure>
+  <blockquote @html="md(this.slide.quote)"></blockquote>
+  <figcaption
+    webc:if="this.slide.cite"
+    class="cite"
+    @html="mdI(`--- ${this.slide.cite}${this.slide.source ? ', ' + this.slide.source : ''}`)">
+  </figcaption>
+</figure>
+
+<style>
+quote-slide {
+  --quote-hang: var(--gap);
+  --quote-space: calc(var(--gap) + 4cqi);
+  display: grid;
+
+  figure {
+    display: grid;
+    gap: var(--gap);
+    padding: var(--gap) calc(var(--quote-hang) + var(--quote-space));
+    place-content: center;
+  }
+
+  blockquote {
+    --slnt: -15;
+    --casl: 1;
+
+    font-size: var(--large);
+    margin: 0;
+    max-width: 46ch;
+    position: relative;
+
+    &::before {
+      color: var(--primary);
+      background: var(--gradient-text);
+      background-clip: text;
+      -webkit-background-clip: text;
+      text-fill-color: transparent;
+      -webkit-text-fill-color: transparent;
+      content: '"';
+      font-weight: 1000;
+      position: absolute;
+      right: 100%;
+    }
+
+    strong {
+      color: var(--primary);
+      background: var(--gradient-text);
+      background-clip: text;
+      -webkit-background-clip: text;
+      text-fill-color: transparent;
+      -webkit-text-fill-color: transparent;
+      font-weight: 400;
+      padding-inline: 0.1em;
+      text-shadow: none;
+    }
+
+    em {
+      --fancy-text-padding-end: .2em;
+    }
+
+    :first-child {
+      margin-block-start: 0;
+    }
+
+    :last-child {
+      margin-block-end: 0;
+    }
+  }
+
+  .cite {
+    a:any-link {
+      --slnt: -15;
+    }
+  }
+}
+</style>
