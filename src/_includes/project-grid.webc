@@ -7,3 +7,12 @@
   <h2><a :href="project.url" @html="mdI(project.data.title)"></a></h2>
   <p @html="mdI(project.data.desc)"></p>
 </article>
+
+<style>
+  project-grid {
+    display: grid;
+    gap: var(--gap);
+
+    p { margin: unset; }
+  }
+</style>
