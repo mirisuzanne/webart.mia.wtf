@@ -20,7 +20,7 @@
     <span webc:if="this.page.url === '/'">Web<strong>Art</strong></span>
     <a webc:else href="/" rel="home">Web<strong>Art</strong></a>
 
-    <a href="/background/">tour</a>
+    <a href="/tour/">tour</a>
   </nav>
 
   <main

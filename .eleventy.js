@@ -1,29 +1,14 @@
 import pluginWebc from "@11ty/eleventy-plugin-webc";
 import { eleventyImagePlugin } from "@11ty/eleventy-img";
-import markdownIt from "markdown-it";
+
+import { load } from 'js-yaml';
+
+import collections from './config/collections.js';
+import filters from './config/filters.js';
 
 export default function(eleventyConfig) {
-  eleventyConfig.addFilter('getStyles', (slide, allow) => {
-    const props = allow || ['background', 'color'];
-    const style = [];
-
-    props.forEach((prop) => {
-      if (slide[prop]) {
-        style.push(`--slide-${prop}: ${slide[prop]};`);
-      }
-    });
-
-    return style
-      ? style.join('')
-      : null;
-  });
-
-  eleventyConfig.addCollection("parts", function (collectionApi) {
-    return collectionApi
-      .getAll()
-      .filter((page) => page.data.pt)
-      .sort((a,b) => a.data.pt - b.data.pt);
-  });
+  eleventyConfig.addPlugin(collections);
+  eleventyConfig.addPlugin(filters);
 
   eleventyConfig.addPlugin(pluginWebc, {
     components: [
@@ -52,20 +37,7 @@ export default function(eleventyConfig) {
     './src/_fonts': 'fonts',
   });
 
-  // markdown
-  let options = {
-    html: true,
-    breaks: false,
-    typographer: true,
-  };
-
-  const md = markdownIt(options).disable('code');
-  const block = (content) => (content ? md.render(content.trim()) : '');
-  const inline = (content) => (content ? md.renderInline(content.trim()) : '');
-
-  eleventyConfig.addFilter('md', block);
-  eleventyConfig.addFilter('mdI', inline);
-  eleventyConfig.setLibrary("md", md);
+  eleventyConfig.addDataExtension('yml, yaml', (contents) => load(contents));
 
   // Return your Object options:
   return {

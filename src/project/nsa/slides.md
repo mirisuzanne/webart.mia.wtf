@@ -1,9 +1,5 @@
 ---
-title: >
-  NSA**4**.US
-desc: If you _think something_, say something
-url: nsa4.us
-date: 2014-06-01
+layout: slides
 
 slides:
 - url: https://en.wikipedia.org/wiki/Edward_Snowden

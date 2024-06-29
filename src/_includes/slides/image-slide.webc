@@ -10,7 +10,7 @@
 
 <figure
   :image-layout="slide.layout || 'normal'"
-  :style="getStyles(this.slide, ['background', 'fit', 'position', 'padding'])"
+  :style="slideStyles(this.slide, ['background', 'fit', 'position', 'padding'])"
 >
   <img
     webc:if="this.slide.img"

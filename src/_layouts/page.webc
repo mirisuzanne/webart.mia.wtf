@@ -3,7 +3,7 @@ layout: base
 ---
 
 <header>
-  <h1 @html="mdI(this.title)"></h1>
+  <h1 @html="mdI(this.title || this.project)"></h1>
   <p @html="mdI(this.desc)"></p>
 </header>
 

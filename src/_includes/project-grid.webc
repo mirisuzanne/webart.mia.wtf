@@ -1,11 +1,14 @@
 <article
-  webc:for="project of this.list"
-  @aatributes="project.data.img ? ({
-    style: `--image: url(${project.data.img})`,
+  webc:for="item of this.list"
+  @attributes="item.data.img ? ({
+    style: `--image: url(${item.data.img})`,
   }) : ({})"
 >
-  <h2><a :href="project.url" @html="mdI(project.data.title)"></a></h2>
-  <p @html="mdI(project.data.desc)"></p>
+  <h2><a
+    :href="item.url"
+    @html="mdI(item.data.title || item.data.project)"
+  ></a></h2>
+  <p @html="mdI(item.data.desc)"></p>
 </article>
 
 <style>

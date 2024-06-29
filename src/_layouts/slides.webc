@@ -4,12 +4,15 @@ layout: base
 
 <slide-deck :id="slugify(this.page.url)" slide-view="speaker" key-control>
   <start-slide
-    :@title="this.title"
+    :@title="this.title || this.project"
     :@desc="this.desc"
     :@date="this.page.date"
-    :@is-project="this.tags?.includes('project')"
+    :@project="this.project
+      ? collections.projects.find((p) => p.data.project === this.project)
+      : null"
     slide-canvas
   >start slide</start-slide>
+
   <div
     webc:nokeep
     webc:for="slide of this.slides"
@@ -32,9 +35,10 @@ layout: base
       slide-canvas
     >title slide</title-slide>
   </div>
+
   <next-project
-    webc:if="this.tags?.includes('project') && getNextCollectionItem(collections.project)"
-    :@next="getNextCollectionItem(collections.project)"
+    webc:if="this.project && getNextCollectionItem(collections.tour)"
+    :@next="getNextCollectionItem(collections.tour)"
     slide-canvas
   >next project</next-project>
 </slide-deck>

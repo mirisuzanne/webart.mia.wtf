@@ -1,8 +1,5 @@
 ---
-title: Monkey **Writr**
-desc: For finite monkeys _on a deadline_
-url: monkey.writr.art
-date: 2021-08-12
+layout: slides
 
 slides:
 

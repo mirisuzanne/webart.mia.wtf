@@ -1,8 +1,5 @@
 ---
-title: The **Post-Obsolete** Book
-desc: A reflection on _the obsolescence of obsolescence_
-url: post-obsolete.com
-date: 2012-06-27
+layout: slides
 
 slides:
 

@@ -1,8 +1,5 @@
 ---
-title: Riding **SideSaddle**
-desc: A novel on note cards _and online_
-url: ridingsidesaddle.com
-date: 2015-05-01
+layout: slides
 
 slides:
 - img: bg/sidesaddle-box.jpg

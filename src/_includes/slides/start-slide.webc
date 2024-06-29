@@ -1,12 +1,15 @@
 <header>
   <div class="deck-title">
-    <h1 @html="mdI(this.title)"></h1>
+    <h1><a
+      :href="this.project ? this.project.url : '/'"
+      @html="mdI(this.title)"></a>
+    </h1>
     <p @html="mdI(this.desc)"></p>
   </div>
 
   <div class="caption">
     <time
-      webc:if="this.isProject"
+      webc:if="this.project"
       :datetime="this.date"
       @html="`circa <em>${this.date.getUTCFullYear()}</em>`"
     ></time>

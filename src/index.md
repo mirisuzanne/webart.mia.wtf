@@ -1,9 +1,9 @@
 ---
 title: Digital **Art**(_ifacts_)
 eleventyImport:
-  collections: ["project"]
+  collections: ["projects"]
 ---
 
 <div webc:is="project-grid"
-  :@list="collections.project"
+  :@list="collections.projects"
 ></div>

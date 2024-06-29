@@ -28,6 +28,7 @@
     "@11ty/eleventy-img": "^4.0.2",
     "@11ty/eleventy-plugin-webc": "^0.11.2",
     "@11ty/webc": "^0.11.4",
-    "@oddbird/slide-deck": "^0.1.4"
+    "@oddbird/slide-deck": "^0.1.4",
+    "js-yaml": "^4.1.0"
   }
 }

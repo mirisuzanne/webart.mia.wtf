@@ -1,5 +1,4 @@
 ---
-pt: 1
 title: Web **Enthusiast**?
 desc: (let's find out)
 layout: slides
@@ -351,5 +350,5 @@ slides:
 
 - pre: A few along the way…
   title: >
-    [The **Post-Obsolete** Book](/project/post-obsolete/)
+    [The **Post-Obsolete** Book](/project/post-obsolete/slides/)
 ---

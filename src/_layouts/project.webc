@@ -1,0 +1,11 @@
+---
+layout: page
+---
+
+<a
+  :href="`https://${this.domain}`"
+  @text="this.domain"
+></a>
+
+<time :datetime="this.date" @html="`circa <em>${this.date.getUTCFullYear()}</em>`"></time>
+(<a :href="`${page.url}slides/`">project slides</a>)

@@ -4,7 +4,7 @@
     <a
       class="title"
       :href="next.url"
-      @html="mdI(next.data.title)"
+      @html="mdI(next.data.title || next.data.project)"
     ></a>
   </h2>
 </nav>

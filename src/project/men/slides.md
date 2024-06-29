@@ -1,9 +1,5 @@
 ---
-title: >
-  **Men** in Brackets
-desc: What men daily do [_in brackets_]
-url: men.mia.wtf
-date: 2019-07-25
+layout: slides
 
 slides:
 

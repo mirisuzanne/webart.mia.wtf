@@ -1,8 +1,5 @@
 ---
-title: Bu$ine$$-**Bu$ine$$**
-desc: This is a business site, _and business is good_
-url: business-business.business
-date: 2022-11-04
+layout: slides
 
 slides:
 
