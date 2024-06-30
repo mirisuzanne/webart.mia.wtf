@@ -1,39 +1,4 @@
 <fieldset>
-  <legend>Themes</legend>
-
-  <ground-control set-attr="color-theme">
-    <label for="color-theme">Theme</label>
-    <select name="color-theme" id="color-theme">
-      <option value="monochrome">monochrome</option>
-      <option value="duotone">duotone</option>
-      <option value="complement" =>complement</option>
-      <option value="adjacent">adjacent</option>
-      <option value="triad" selected>triad</option>
-    </select>
-  </ground-control>
-
-  <ground-control set-prop="--_user-scheme">
-    <label for="color-scheme">Mode</label>
-    <select name="color-scheme" id="color-scheme">
-      <option value="light dark">auto</option>
-      <option value="light">light</option>
-      <option value="dark">dark</option>
-    </select>
-  </ground-control>
-
-  <ground-control set-prop="--_user-contrast">
-    <label for="user-contrast">Contrast</label>
-    <input
-      id="user-contrast"
-      type="range"
-      min="25"
-      max="200"
-      :value="$data.color.contrast">
-    <span><output for="user-contrast"></output>%</span>
-  </ground-control>
-</fieldset>
-
-<fieldset>
   <legend>Colors</legend>
 
   <ground-control set-prop="--_user-hue">
@@ -70,7 +35,46 @@
   </ground-control>
 </fieldset>
 
+<fieldset>
+  <legend>Themes</legend>
+
+  <ground-control set-attr="color-theme">
+    <label for="color-theme">Theme</label>
+    <select name="color-theme" id="color-theme">
+      <option value="monochrome">monochrome</option>
+      <option value="duotone">duotone</option>
+      <option value="complement" =>complement</option>
+      <option value="adjacent">adjacent</option>
+      <option value="triad" selected>triad</option>
+    </select>
+  </ground-control>
+
+  <ground-control set-prop="--_user-scheme">
+    <label for="color-scheme">Mode</label>
+    <select name="color-scheme" id="color-scheme">
+      <option value="light dark">auto</option>
+      <option value="light">light</option>
+      <option value="dark">dark</option>
+    </select>
+  </ground-control>
+
+  <ground-control set-prop="--_user-contrast">
+    <label for="user-contrast">Contrast</label>
+    <input
+      id="user-contrast"
+      type="range"
+      min="25"
+      max="200"
+      :value="$data.color.contrast">
+    <span><output for="user-contrast"></output>%</span>
+  </ground-control>
+</fieldset>
+
 <style>
+  color-theme {
+    display: contents;
+  }
+
   #user-hue {
     --thumb: var(--primary);
     --track: linear-gradient(

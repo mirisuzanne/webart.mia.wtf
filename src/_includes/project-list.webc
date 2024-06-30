@@ -8,11 +8,14 @@
     :href="item.url"
     @html="mdI(item.data.title || item.data.project)"
   ></a></h2>
-  <p @html="mdI(item.data.desc)"></p>
+  <p>
+    <show-time :date="item.page.date"></show-time> —
+    <span @html="mdI(item.data.desc)"></span>
+  </p>
 </article>
 
 <style>
-  project-grid {
+  project-list {
     display: grid;
     gap: var(--gap);
 

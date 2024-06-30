@@ -48,3 +48,9 @@
     <output for="user-slnt"></output>
   </ground-control>
 </fieldset>
+
+<style>
+  font-theme {
+    display: contents;
+  }
+</style>

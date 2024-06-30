@@ -4,7 +4,12 @@ layout: base
 
 <header>
   <h1 @html="mdI(this.title || this.project)"></h1>
-  <p @html="mdI(this.desc)"></p>
+  <p>
+    <span webc:if="this.project" webc:nokeep>
+      <show-time :date="this.page.date"></show-time> —
+    </span>
+    <span @html="mdI(this.desc)"></span>
+  </p>
 </header>
 
 <main
@@ -27,10 +32,10 @@ layout: base
     gap: var(--gap);
     grid-template: 'n' auto 'h' auto 'm' 1fr 'a' auto 'f' auto / 100%;
 
-    @media (width > 45em) {
+    @media (width > 50em) {
       grid-template:
         'n n' auto
-        'h h' auto
+        'h a' auto
         'm a' 1fr
         'f f' auto
         / 1fr minmax(min-content, min(20em, 25%))
@@ -42,6 +47,20 @@ layout: base
     > main { grid-area: m; }
     > aside { grid-area: a; }
     > footer { grid-area: f; }
+  }
+
+  header p {
+    margin: unset;
+  }
+
+  aside {
+    display: flex;
+    flex-flow: wrap;
+    gap: var(--gap);
+
+    fieldset {
+      flex: 1;
+    }
   }
 
   fieldset {

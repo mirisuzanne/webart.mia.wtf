@@ -8,11 +8,10 @@
   </div>
 
   <div class="caption">
-    <time
+    <show-time
       webc:if="this.project"
-      :datetime="this.date"
-      @html="`circa <em>${this.date.getUTCFullYear()}</em>`"
-    ></time>
+      :date="this.date"
+    ></show-time>
     <div class="actions">
       <button set-view="speaker">grid</button>
       <button set-view="slideshow">present</button>

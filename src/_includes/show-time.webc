@@ -1,0 +1,22 @@
+<script webc:setup>
+const circa = (date) => `circa ${date.getUTCFullYear()}`;
+
+const fns = {
+  default: circa,
+  circa,
+};
+
+const format = (date, as) => as ? fns[as](date) : circa(date);
+</script>
+
+<time
+  :datetime="this.date.toISOString()"
+  @html="format(this.date, this.as)"
+></time>
+
+<style>
+  time {
+    --mono: 1;
+    --casl: 1;
+  }
+</style>

@@ -4,6 +4,6 @@ eleventyImport:
   collections: ["projects"]
 ---
 
-<div webc:is="project-grid"
+<div webc:is="project-list"
   :@list="collections.projects"
 ></div>
